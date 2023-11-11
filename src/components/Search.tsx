@@ -24,7 +24,7 @@ const Search: React.FC = () => {
                         placeholder="Search tasks..."
                         className="p-2 border border-gray-300 rounded-xl w-3/4"
                     />
-                    <button onClick={HandleSubmit} type="submit" className="bg-[#107c5c] ml-2 text-white text-l p-2 rounded-xl px-10 py-4 ">
+                    <button onClick={HandleSubmit} type="submit" className="bg-black ml-2 text-white text-l p-2 rounded-xl px-10 py-4 ">
                         Get help today
                     </button>
                 </form>

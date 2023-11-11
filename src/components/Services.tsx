@@ -107,7 +107,7 @@ const Services: React.FC = () => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="p-2 border border-gray-300 rounded-l w-full"
                             />
-                            <button type="submit" className="bg-[#107c5c] text-white px-4 py-2 rounded-r mt-2 md:mt-0">
+                            <button type="submit" className="bg-black text-white px-4 py-2 rounded-r mt-2 md:mt-0">
                                 Search
                             </button>
                         </form>
