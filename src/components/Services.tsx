@@ -97,7 +97,7 @@ const Services: React.FC = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="w-8/12 ml-8">
+                <div className="md:w-8/12 md:ml-8 md:p-0 p-2">
                     <div className='flex items-center p-4 bg-gray-200 md:h-20 h-32'>
                         <form onSubmit={handleSearch} className="md:flex items-center justify-center w-3/4 ml-4">
                             <input
