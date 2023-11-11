@@ -13,8 +13,8 @@ const Login: React.FC<LoginProps> = ({ handleLogin }) => {
     };
 
     return (
-        <div className="flex flex-col items-start px-10 py-20 justify-center signup">
-            <div className='bg-white flex flex-col px-20 py-12 md:ml-32 rounded-lg'>
+        <div className="flex flex-col items-start md:px-10 px-3 py-20 justify-center signup">
+            <div className='bg-white flex flex-col md:px-20 px-6 py-12 md:ml-32 rounded-lg'>
                 <img src={require("../logo/ZT.png")} alt='Zonetasker' className='w-72 mb-4' />
                 <p className='text-sm mt-6'>Email Address</p>
                 <input
@@ -22,7 +22,7 @@ const Login: React.FC<LoginProps> = ({ handleLogin }) => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border rounded-md p-2 mb-4 w-72"
+                    className="border rounded-md p-2 mb-4 w-full"
                 />
                 <p className='text-sm'>Password</p>
                 <input
@@ -30,7 +30,7 @@ const Login: React.FC<LoginProps> = ({ handleLogin }) => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="border rounded-md p-2 mb-4 w-72"
+                    className="border rounded-md p-2 mb-4 w-full"
                 />
                 <p className='font-bold text-base mb-4 cursor-pointer'>Forgot password?</p>
                 <button onClick={handleLoginClick} className="bg-black text-white py-2 px-4 h-12 rounded-full">

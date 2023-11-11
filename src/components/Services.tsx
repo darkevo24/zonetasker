@@ -86,7 +86,7 @@ const Services: React.FC = () => {
                 <h3 className='text-4xl font-bold'>Explore taskers in your area.</h3>
                 <p className='text-xl mt-2'>Find the right person or business to take care of your task.</p>
             </div>
-            <div className="p-6 flex md:flex-row flex-col">
+            <div className="md:p-6 p-2 flex md:flex-row flex-col">
                 <div className="md:w-1/4 pr-6 text-left flex flex-col items-end mr-4">
                     <div>
                         <h1 className='text-2xl font-bold'>Browsed By Categories</h1>
@@ -98,8 +98,8 @@ const Services: React.FC = () => {
                     </div>
                 </div>
                 <div className="w-8/12 ml-8">
-                    <div className='flex items-center bg-gray-200 h-20'>
-                        <form onSubmit={handleSearch} className="flex items-center justify-center w-3/4 ml-4">
+                    <div className='flex items-center p-4 bg-gray-200 md:h-20 h-32'>
+                        <form onSubmit={handleSearch} className="md:flex items-center justify-center w-3/4 ml-4">
                             <input
                                 type="text"
                                 placeholder="Search tasks..."
@@ -107,7 +107,7 @@ const Services: React.FC = () => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="p-2 border border-gray-300 rounded-l w-full"
                             />
-                            <button type="submit" className="bg-[#107c5c] text-white px-4 py-2 rounded-r">
+                            <button type="submit" className="bg-[#107c5c] text-white px-4 py-2 rounded-r mt-2 md:mt-0">
                                 Search
                             </button>
                         </form>

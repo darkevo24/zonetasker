@@ -52,29 +52,29 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
     };
 
     return (
-        <div className="flex flex-col items-start px-10 py-20 justify-center signup">
-            <div className='bg-white flex flex-col px-20 py-12 md:ml-32 rounded-lg'>
+        <div className="flex flex-col items-start md:px-10 px-3 py-20 justify-center signup">
+            <div className='bg-white flex flex-col md:px-20 py-12 px-6 md:ml-32 rounded-lg'>
                 <img src={require("../logo/ZT.png")} alt='Zonetasker' className='w-72 mb-4' />
                 <input
                     type="text"
                     placeholder="First Name"
                     value={signupData.firstName}
                     onChange={(e) => handleInputChange('firstName', e.target.value)}
-                    className="border rounded-md p-2 mb-4 w-72 mt-6"
+                    className="border rounded-md p-2 mb-4 w-full mt-6"
                 />
                 <input
                     type="text"
                     placeholder="Last Name"
                     value={signupData.lastName}
                     onChange={(e) => handleInputChange('lastName', e.target.value)}
-                    className="border rounded-md p-2 mb-4 w-72"
+                    className="border rounded-md p-2 mb-4 w-full"
                 />
                 <input
                     type="email"
                     placeholder="Email Address"
                     value={signupData.emailAddress}
                     onChange={(e) => handleInputChange('emailAddress', e.target.value)}
-                    className="border rounded-md p-2 mb-4 w-72"
+                    className="border rounded-md p-2 mb-4 w-full"
                 />
                 <div className='flex items-center w-72'>
                     <select
@@ -110,7 +110,7 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
                     placeholder="Zip Code"
                     value={signupData.zipCode}
                     onChange={(e) => handleInputChange('zipCode', e.target.value)}
-                    className="border rounded-md p-2 mb-4 w-72"
+                    className="border rounded-md p-2 mb-4 w-full"
                 />
 
                 <label className="flex items-center flex-row mb-4 w-72">
