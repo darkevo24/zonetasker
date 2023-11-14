@@ -65,7 +65,7 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
                     <div className='bg-gray-200 w-12 h-12 rounded-xl flex items-center justify-center'>4</div>
                 </div>
             </div>
-            <div className="flex flex-col items-start md:px-10 px-3 py-20 justify-center">
+            <div className="flex flex-col items-center md:items-start md:px-10 px-3 py-20 justify-center">
                 <div className='bg-white flex flex-col md:px-20 py-12 px-6 md:ml-32 rounded-lg'>
                     <img src={require("../../logo/ZT.png")} alt='Zonetasker' className='w-72 mb-4' />
                     <form action='/post-a-job-step-4' onSubmit={handleSignUpClick} className="flex flex-col">

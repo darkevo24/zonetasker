@@ -98,13 +98,13 @@ const Step1: React.FC = () => {
             <div className='w-full flex flex-col items-center'>
                 <div className='bg-white w-10/12 p-8 mt-4 rounded-lg'>
                     <h1 className='text-2xl font-bold'>Choose category</h1>
-                    <div className='flex items-center mt-2'>
+                    <div className='flex items-center mt-2 flex-col md:flex-row'>
                         {selectedCategories.map((item, index) => (
-                            <div key={index} className='flex items-center justify-center mr-2 text-[#d4c414] cursor-pointer border-2 border-[#d4c414] md:px-2 md:py-1 p-1 rounded-full'>
+                            <div key={index} className='flex items-center flex-col md:flex-row md:my-0 my-2 justify-center mr-2 text-[#d4c414] cursor-pointer border-2 border-[#d4c414] px-2 py-1 rounded-full'>
                                 <p onClick={() => removeCategory(index)}>{item}</p>
                             </div>
                         ))}
-                        <div className='flex items-center text-[#d4c414] ml-4'>
+                        <div className='flex items-center text-[#d4c414] md:ml-4'>
                             <svg onClick={openModal} className='cursor-pointer' width="20" height="20" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="20" cy="20" r="18" style={circleStyle} />
                                 <line x1="12" y1="20" x2="28" y2="20" style={lineStyle} />
