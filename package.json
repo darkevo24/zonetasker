@@ -9,6 +9,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.61",
     "@types/react": "^18.2.37",
+    "@types/react-calendar": "^4.1.0",
     "@types/react-datepicker": "^4.19.3",
     "@types/react-dom": "^18.2.15",
     "autoprefixer": "^10.4.16",
