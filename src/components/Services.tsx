@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "../styles/services.css";
+import Navbar from './Navbar';
 
 interface Project {
     id: number;
@@ -82,6 +83,7 @@ const Services: React.FC = () => {
 
     return (
         <>
+            <Navbar />
             <div className='bg-yellow h-60 w-full flex flex-col justify-center md:pl-40 pl-10'>
                 <h3 className='text-4xl font-bold'>Explore taskers in your area.</h3>
                 <p className='text-xl mt-2'>Find the right person or business to take care of your task.</p>

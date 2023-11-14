@@ -1,6 +1,4 @@
 import React, { ChangeEvent, useState } from 'react';
-import "../styles/signup.css";
-import Navbar from './Navbar';
 
 interface SignUpProps {
     handleSignUp: (signupData: SignUpData) => void;
@@ -15,7 +13,7 @@ interface SignUpData {
     zipCode: string;
 }
 
-const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
+const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
     const [signupData, setSignupData] = useState<SignUpData>({
         firstName: '',
         lastName: '',
@@ -50,16 +48,26 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
 
     const handleSignUpClick = () => {
         handleSignUp(signupData);
-        window.location.href = "/post-a-job-step-4";
     };
 
     return (
-        <>
-            <Navbar />
-            <div className="flex flex-col items-start md:px-10 px-3 py-20 justify-center signup">
+        <div className='w-full bg-gray-100'>
+            <div className='w-full bg-white flex items-center py-8 px-8'>
+                <img onClick={() => { window.location.href = "/" }} src={require('../../logo/ZT.png')} alt='logo' width={230} className='absolute cursor-pointer' />
+                <div className='flex items-center justify-center w-full text-white'>
+                    <div className='bg-gray-500 w-12 h-12 rounded-xl flex items-center justify-center'>1</div>
+                    <div className=' bg-gray-200 w-16 h-0.5'></div>
+                    <div className='bg-gray-500 w-12 h-12 rounded-xl flex items-center justify-center'>2</div>
+                    <div className=' bg-gray-200 w-16 h-0.5'></div>
+                    <div className='bg-[#d4c414] w-12 h-12 rounded-xl flex items-center justify-center'>3</div>
+                    <div className=' bg-gray-200 w-16 h-0.5'></div>
+                    <div className='bg-gray-200 w-12 h-12 rounded-xl flex items-center justify-center'>4</div>
+                </div>
+            </div>
+            <div className="flex flex-col items-start md:px-10 px-3 py-20 justify-center">
                 <div className='bg-white flex flex-col md:px-20 py-12 px-6 md:ml-32 rounded-lg'>
-                    <img src={require("../logo/ZT.png")} alt='Zonetasker' className='w-72 mb-4' />
-                    <form className='w-72'>
+                    <img src={require("../../logo/ZT.png")} alt='Zonetasker' className='w-72 mb-4' />
+                    <form className="flex flex-col">
                         <input
                             type="text"
                             placeholder="First Name"
@@ -131,6 +139,7 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
                                 checked={isAgreed}
                                 onChange={handleAgreementChange}
                                 className="mr-4"
+                                required
                             />
                             <p className="text-black">
                                 By signing up you agree to our <span className='font-bold underline'>Terms of Use</span> and <span className='font-bold underline'>Privacy Policy</span>
@@ -147,8 +156,8 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
                     </form>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
-export default SignUp;
+export default Step3;

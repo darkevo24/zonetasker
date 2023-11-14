@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
                 </div>
                 <div className="flex items-center mt-4 md:mt-0 md:flex-row flex-col">
                     <a href="/tasks" className="hover:text-gray-300 m-2 md:m-4 text-base font-bold">How to post a job</a>
-                    <a href="/tasks" className="m-2 md:ml-5 hover:opacity-80 bg-[#d4c414] text-white rounded-lg w-48 h-14 flex justify-center items-center">Post a job</a>
+                    <a href="/post-a-job-step-1" className="m-2 md:ml-5 hover:opacity-80 bg-[#d4c414] text-white rounded-lg w-48 h-14 flex justify-center items-center">Post a job</a>
                     <a href="/login" className="m-2 md:ml-5 hover:opacity-80 bg-black text-white w-48 h-14 flex justify-center items-center rounded-lg">Sign in</a>
                 </div>
             </div>

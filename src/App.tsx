@@ -6,6 +6,10 @@ import Navbar from './components/Navbar';
 import Services from './components/Services';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import Step1 from './components/Post-a-job/Step1';
+import Step2 from './components/Post-a-job/Step2';
+import Step3 from './components/Post-a-job/Step3';
+import Step4 from './components/Post-a-job/Step4';
 
 interface SignUpData {
   firstName: string;
@@ -18,24 +22,27 @@ interface SignUpData {
 
 const App: React.FC = () => {
   const handleLogin = (email: string, password: string) => {
-    // Handle login logic here
     console.log(`Logging in with email: ${email} and password: ${password}`);
+    // Handle login logic here
   };
 
   const handleSignUp = (signupData: SignUpData) => {
-    // Handle sign up logic here
     console.log('Signing up:', signupData);
-    // You can perform further actions like making API calls to a backend with this data
+    // Handle sign up logic here, like API calls with the data
   };
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/tasks" element={<Services />} />
+          <Route path="/post-a-job-step-1" element={<Step1 />} />
+          <Route path="/post-a-job-step-2" element={<Step2 />} />
+          <Route path="/post-a-job-step-3" element={<Step3 handleSignUp={handleSignUp} />} />
+          <Route path="/post-a-job-step-4" element={<Step4 />} />
           <Route path="/sign-up" element={<SignUp handleSignUp={handleSignUp} />} />
           <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-          <Route path="/" element={<Home />} />
         </Routes>
         <Footer />
       </div>
