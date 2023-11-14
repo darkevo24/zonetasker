@@ -85,7 +85,7 @@ const Step1: React.FC = () => {
 
             <div className='w-full flex flex-col items-center'>
                 <div className='bg-white w-10/12 p-8 mt-8 rounded-lg'>
-                    <h1 className='text-2xl font-bold'>Post or task desscription</h1>
+                    <h1 className='text-2xl font-bold'>Post or task description</h1>
                     <textarea
                         className='w-full h-32 mt-4 px-4 py-3 border border-black rounded-2xl text-gray-400'
                         value={taskDescription}
