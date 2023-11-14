@@ -126,7 +126,7 @@ const Step4: React.FC = () => {
 
             <div className='w-full flex flex-col items-center mb-8'>
                 <div className='w-10/12 rounded-lg flex justify-between flex-col md:flex-row '>
-                    <div className='p-6 md:w-3/12 w-full bg-white rounded-lg'>
+                    <div className='p-6 md:w-3/12 w-full bg-white rounded-lg h-72'>
                         <p className="text-xl font-semibold mb-0">Sort</p>
                         <div className="relative">
                             <select

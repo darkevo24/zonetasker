@@ -68,7 +68,7 @@ const Step2: React.FC = () => {
                     <div className='w-full'>
                         <p>Request for :</p>
                         <p>{formatDate(date)}</p>
-                        <button className={`bg-[#d39c1a] px-10 py-2 mt-2 text-white rounded-full`} >Select & continue</button>
+                        <button onClick={() => { window.location.href = "/post-a-job-step-3" }} className={`bg-[#d39c1a] px-10 py-2 mt-2 text-white rounded-full`} >Select & continue</button>
                         <p className='w-40 mt-3 text-sm'>Next, confirm your detail to get connected with your Tasker.</p>
                     </div>
                 </div>
