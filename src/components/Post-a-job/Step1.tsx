@@ -70,9 +70,9 @@ const Step1: React.FC = () => {
 
     return (
         <div className='w-full bg-gray-100'>
-            <div className='w-full bg-white flex items-center py-8 px-8'>
+            <div className='w-full bg-white flex items-center flex-col md:flex-row py-8 px-8'>
                 <img onClick={() => { window.location.href = "/" }} src={require('../../logo/ZT.png')} alt='logo' width={230} className='absolute cursor-pointer' />
-                <div className='flex items-center justify-center w-full text-white'>
+                <div className='flex items-center justify-center w-full text-white md:mt-0 mt-20'>
                     <div className='bg-[#d4c414] w-12 h-12 rounded-xl flex items-center justify-center'>1</div>
                     <div className=' bg-gray-200 w-16 h-0.5'></div>
                     <div className='bg-gray-200 w-12 h-12 rounded-xl flex items-center justify-center'>2</div>
@@ -100,7 +100,7 @@ const Step1: React.FC = () => {
                     <h1 className='text-2xl font-bold'>Choose category</h1>
                     <div className='flex items-center mt-2'>
                         {selectedCategories.map((item, index) => (
-                            <div key={index} className='flex items-center mr-2 text-[#d4c414] cursor-pointer border-2 border-[#d4c414] px-2 py-1 rounded-full'>
+                            <div key={index} className='flex items-center justify-center mr-2 text-[#d4c414] cursor-pointer border-2 border-[#d4c414] md:px-2 md:py-1 p-1 rounded-full'>
                                 <p onClick={() => removeCategory(index)}>{item}</p>
                             </div>
                         ))}

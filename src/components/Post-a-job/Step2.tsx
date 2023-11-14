@@ -35,9 +35,9 @@ const Step2: React.FC = () => {
 
     return (
         <div className='w-full bg-gray-100'>
-            <div className='w-full bg-white flex items-center py-8 px-8'>
+            <div className='w-full bg-white flex items-center flex-col md:flex-row py-8 px-8'>
                 <img onClick={() => { window.location.href = "/" }} src={require('../../logo/ZT.png')} alt='logo' width={230} className='absolute cursor-pointer' />
-                <div className='flex items-center justify-center w-full text-white'>
+                <div className='flex items-center justify-center w-full text-white md:mt-0 mt-20'>
                     <div className='bg-gray-500 w-12 h-12 rounded-xl flex items-center justify-center'>1</div>
                     <div className=' bg-gray-200 w-16 h-0.5'></div>
                     <div className='bg-[#d4c414] w-12 h-12 rounded-xl flex items-center justify-center'>2</div>
@@ -49,10 +49,10 @@ const Step2: React.FC = () => {
             </div>
 
             <div className='w-full flex flex-col items-center mb-8'>
-                <div className='flex w-10/12 bg-white  p-16 mt-8 rounded-lg items-center'>
-                    <div className=' w-9/12'>
+                <div className='flex md:flex-row flex-col w-10/12 bg-white p-4 md:p-16 mt-8 rounded-lg items-center justify-center'>
+                    <div className=' md:w-9/12 w-full'>
                         <h1 className='text-2xl '>Choose your task date and start time :</h1>
-                        <Calendar className={'mt-10'} onChange={onChange} value={date} tileClassName={customTile} />
+                        <Calendar className={'mt-5'} onChange={onChange} value={date} tileClassName={customTile} />
                         <DatePicker
                             selected={date}
                             onChange={onChange}
@@ -61,7 +61,7 @@ const Step2: React.FC = () => {
                             timeIntervals={15}
                             timeCaption="Time"
                             dateFormat="h:mm aa"
-                            className='mt-2 w-[350px] border border-black rounded-full p-2'
+                            className='mt-2 md:w-[350px] w-3/4 border border-black rounded-full p-2'
                         />
                         <p className='text-[12px] mt-2'>You can chat to adjust task details or change start time after confirming</p>
                     </div>

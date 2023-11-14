@@ -48,13 +48,14 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
 
     const handleSignUpClick = () => {
         handleSignUp(signupData);
+        window.location.href = '/post-a-job-step-4';
     };
 
     return (
         <div className='w-full bg-gray-100'>
-            <div className='w-full bg-white flex items-center py-8 px-8'>
+            <div className='w-full bg-white flex items-center flex-col md:flex-row py-8 px-8'>
                 <img onClick={() => { window.location.href = "/" }} src={require('../../logo/ZT.png')} alt='logo' width={230} className='absolute cursor-pointer' />
-                <div className='flex items-center justify-center w-full text-white'>
+                <div className='flex items-center justify-center w-full text-white md:mt-0 mt-20'>
                     <div className='bg-gray-500 w-12 h-12 rounded-xl flex items-center justify-center'>1</div>
                     <div className=' bg-gray-200 w-16 h-0.5'></div>
                     <div className='bg-gray-500 w-12 h-12 rounded-xl flex items-center justify-center'>2</div>
@@ -67,7 +68,7 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
             <div className="flex flex-col items-start md:px-10 px-3 py-20 justify-center">
                 <div className='bg-white flex flex-col md:px-20 py-12 px-6 md:ml-32 rounded-lg'>
                     <img src={require("../../logo/ZT.png")} alt='Zonetasker' className='w-72 mb-4' />
-                    <form className="flex flex-col">
+                    <form action='/post-a-job-step-4' onSubmit={handleSignUpClick} className="flex flex-col">
                         <input
                             type="text"
                             placeholder="First Name"
@@ -147,7 +148,6 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
                         </label>
 
                         <button
-                            onClick={handleSignUpClick}
                             disabled={!isAgreed} // Disable button if not agreed
                             className={`bg-black text-white py-2 px-4 rounded h-12 rounded-full ${!isAgreed ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
