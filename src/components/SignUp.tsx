@@ -1,6 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
 import "../styles/signup.css";
 import Navbar from './Navbar';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface SignUpProps {
     handleSignUp: (signupData: SignUpData) => void;
@@ -13,6 +16,7 @@ interface SignUpData {
     mobilePhone: string;
     password: string;
     zipCode: string;
+    mobilePhoneCountryCode: string;
 }
 
 const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
@@ -23,6 +27,7 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
         mobilePhone: '',
         password: '',
         zipCode: '',
+        mobilePhoneCountryCode: '',
     });
 
     const countryCodes = [
@@ -48,18 +53,37 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
         setSignupData({ ...signupData, [key]: value });
     };
 
-    const handleSignUpClick = () => {
-        handleSignUp(signupData);
-        window.location.href = "/post-a-job-step-4";
+    const handleSignUpClick = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        // Make a POST request to your backend API
+        signupData.mobilePhoneCountryCode = selectedCountryCode + signupData.mobilePhone;
+        const response = await axios.post('https://zonetasker-be.vercel.app/api/signup', signupData);
+
+        console.log(response);
+
+        if (response.data.message === 'Email address already exists') {
+            toast.error('Email address already exists');
+            return
+        } else if (response.data.message === 'Mobile phone number already exists') {
+            toast.error('Mobile phone already exists');
+            return
+        }
+
+        // // Call the handleSignUp function with the data if needed
+        // handleSignUp(signupData);
+
+        // Redirect or navigate to the next page
+        window.location.href = "/login";
     };
 
     return (
         <>
+            <ToastContainer />
             <Navbar />
             <div className="flex flex-col items-start md:px-10 px-3 py-20 justify-center signup">
                 <div className='bg-white flex flex-col md:px-20 py-12 px-6 md:ml-32 rounded-lg'>
                     <img src={require("../logo/ZT.png")} alt='Zonetasker' className='w-72 mb-4' />
-                    <form className='w-72'>
+                    <form onSubmit={handleSignUpClick} className='w-72'>
                         <input
                             type="text"
                             placeholder="First Name"
@@ -105,6 +129,7 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
                                 value={signupData.mobilePhone}
                                 onChange={(e) => handleInputChange('mobilePhone', e.target.value)}
                                 className="border rounded-md p-2 mb-4 w-full ml-2"
+                                pattern="[0-9]*"
                                 required
                             />
                         </div>
@@ -138,7 +163,6 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
                         </label>
 
                         <button
-                            onClick={handleSignUpClick}
                             disabled={!isAgreed} // Disable button if not agreed
                             className={`bg-black text-white py-2 px-4 rounded h-12 rounded-full ${!isAgreed ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >

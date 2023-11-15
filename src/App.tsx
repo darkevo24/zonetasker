@@ -10,6 +10,9 @@ import Step1 from './components/Post-a-job/Step1';
 import Step2 from './components/Post-a-job/Step2';
 import Step3 from './components/Post-a-job/Step3';
 import Step4 from './components/Post-a-job/Step4';
+import Dashboard from './components/Dashboard/Index';
+import Profile from './components/Feature';
+import ProfileDashboard from './components/Dashboard/Profile';
 
 interface SignUpData {
   firstName: string;
@@ -43,6 +46,8 @@ const App: React.FC = () => {
           <Route path="/post-a-job-step-4" element={<Step4 />} />
           <Route path="/sign-up" element={<SignUp handleSignUp={handleSignUp} />} />
           <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/profile" element={<ProfileDashboard />} />
         </Routes>
         <Footer />
       </div>
