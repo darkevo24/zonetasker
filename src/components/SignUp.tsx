@@ -59,8 +59,6 @@ const SignUp: React.FC<SignUpProps> = ({ handleSignUp }) => {
         signupData.mobilePhoneCountryCode = selectedCountryCode + signupData.mobilePhone;
         const response = await axios.post('https://zonetasker-be.vercel.app/api/signup', signupData);
 
-        console.log(response);
-
         if (response.data.message === 'Email address already exists') {
             toast.error('Email address already exists');
             return

@@ -30,10 +30,9 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     // Fetch tasks from the API
-    axios.get(`http://127.0.0.1:5000/api/tasks`)
+    axios.get(`https://zonetasker-be.vercel.app/api/tasks`)
       .then(response => {
         setTasks(response.data);
-        console.log(response.data)
       })
       .catch(error => {
         console.error('Error fetching tasks:', error);

@@ -20,8 +20,6 @@ const Login: React.FC<LoginProps> = ({ handleLogin }) => {
             password: password,
         });
 
-        console.log(response);
-
         if (response.data.message === 'Login successful') {
             // Handle successful login, e.g., store user information in state or local storage
             toast.success('Login successful');
