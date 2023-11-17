@@ -36,7 +36,7 @@ const Tasks: React.FC = () => {
                         <div>
                             <h1 className="text-xl font-bold">{tasks.task}</h1>
                             <p className='mt-3'>{tasks.description}</p>
-                            <p className='mt-3'>If you are available tomorrow - please send me an applicant</p>
+                            {/* <p className='mt-3'>If you are available tomorrow - please send me an applicant</p> */}
                             <div className='mt-20 flex items-center justify-end flex-col md:flex-row'>
                                 <p>{tasks.applicants} applicants</p>
                                 <button onClick={() => { window.location.href = "/dashboard/applicants/" + id }} className={`bg-[#d4c414] px-10 py-3 font-bold rounded-lg md:ml-8 text-lg`} ><span className='shadow-sm'>Review applicants</span></button>
