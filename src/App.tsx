@@ -50,7 +50,7 @@ const App: React.FC = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='/dashboard/tasks/:id' element={<Tasks />} />
           <Route path='/dashboard/applicants/:id' element={<Applicants />} />
-          <Route path='/dashboard/profile/:id' element={<Profile />} />
+          <Route path='/dashboard/profile/:email' element={<Profile />} />
         </Routes>
         <Footer />
       </div>

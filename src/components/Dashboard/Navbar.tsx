@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Navbar: React.FC = () => {
+    const email = sessionStorage.getItem("userEmail");
+    useEffect(() => {
+        if (!email) {
+            window.location.href = "/login";
+        }
+    }, []);
     return (
         <div className="p-4 md:p-8 w-full bg-white rounded-lg flex flex-col md:flex-row items-center justify-between">
             <img
@@ -21,7 +27,7 @@ const Navbar: React.FC = () => {
                 <p className="mr-4 md:mr-8 mb-2 md:mb-0 text-xl cursor-pointer hover:opacity-80">
                     Marketplace
                 </p>
-                <img
+                <img onClick={() => { window.location.href = "/dashboard/profile/" + email }}
                     src={require("../../logo/profile.png")}
                     alt="Profile"
                     className="w-10 h-10 cursor-pointer hover:opacity-80"

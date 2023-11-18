@@ -100,8 +100,9 @@ const Step4: React.FC = () => {
                 .then((response) => {
                     // Handle success
                     toast.success('Data sent successfully');
-                    sessionStorage.clear();
-                    console.log(response);
+                    sessionStorage.removeItem('taskTitle');
+                    sessionStorage.removeItem('taskDescription');
+                    sessionStorage.removeItem('selectedCategories');
                 })
                 .catch((error: AxiosError) => {
                     // Handle error

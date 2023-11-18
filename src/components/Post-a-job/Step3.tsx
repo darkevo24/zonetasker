@@ -52,9 +52,8 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
     };
 
     useEffect(() => {
-        // Check if userEmail is not present in sessionStorage, then redirect to login
         const userEmail = sessionStorage.getItem('userEmail');
-        if (!userEmail) {
+        if (userEmail) {
             window.location.href = '/post-a-job-step-4';
         }
 
