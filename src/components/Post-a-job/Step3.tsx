@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 interface SignUpProps {
     handleSignUp: (signupData: SignUpData) => void;
@@ -11,6 +13,7 @@ interface SignUpData {
     mobilePhone: string;
     password: string;
     zipCode: string;
+    mobilePhoneCountryCode: string;
 }
 
 const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
@@ -21,6 +24,7 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
         mobilePhone: '',
         password: '',
         zipCode: '',
+        mobilePhoneCountryCode:''
     });
 
     const countryCodes = [
@@ -46,9 +50,26 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
         setSignupData({ ...signupData, [key]: value });
     };
 
-    const handleSignUpClick = () => {
-        handleSignUp(signupData);
-        window.location.href = '/post-a-job-step-4';
+    const handleSignUpClick = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        // Make a POST request to your backend API
+        signupData.mobilePhoneCountryCode = selectedCountryCode + signupData.mobilePhone;
+        const response = await axios.post('https://zonetasker-be.vercel.app/api/signup', signupData);
+
+        if (response.data.message === 'Email address already exists') {
+            toast.error('Email address already exists');
+            return
+        } else if (response.data.message === 'Mobile phone number already exists') {
+            toast.error('Mobile phone already exists');
+            return
+        }
+
+        // // Call the handleSignUp function with the data if needed
+        // handleSignUp(signupData);
+
+        sessionStorage.setItem("userEmail",signupData.emailAddress)
+        // Redirect or navigate to the next page
+        window.location.href = "/post-a-job-step-4";
     };
 
     useEffect(() => {
@@ -65,6 +86,7 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
 
     return (
         <div className='w-full bg-gray-100'>
+            <ToastContainer />
             <div className='w-full bg-white flex items-center flex-col md:flex-row py-8 px-8'>
                 <img onClick={() => { window.location.href = "/" }} src={require('../../logo/ZT.png')} alt='logo' width={230} className='absolute cursor-pointer' />
                 <div className='flex items-center justify-center w-full text-white md:mt-0 mt-20'>

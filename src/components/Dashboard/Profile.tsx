@@ -53,12 +53,6 @@ const Profile: React.FC = () => {
         setIsModalOpen(false);
     };
 
-    const handleSendMessage = () => {
-        // Add logic to handle sending the message (axios, API call, etc.)
-        // ...
-        closeModal();
-    };
-
     return (
         <div className="flex flex-col bg-gray-100 p-8">
             <Navbar />
