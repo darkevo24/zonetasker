@@ -78,7 +78,7 @@ const Step4: React.FC = () => {
         const taskTitle = sessionStorage.getItem('taskTitle');
         const taskDescription = sessionStorage.getItem('taskDescription');
         const selectedCategories = JSON.parse(sessionStorage.getItem('selectedCategories') || '[]') as string[];
-
+        const email = sessionStorage.getItem('userEmail')
         // Data to be sent to the backend
         const postData: PostData = {
             taskTitle: taskTitle || '',
@@ -95,7 +95,8 @@ const Step4: React.FC = () => {
                 "task": taskTitle,
                 "description": taskDescription,
                 "applicants": 0,
-                "categories": selectedCategories.toString()
+                "categories": selectedCategories.toString(),
+                "email": email
             })
                 .then((response) => {
                     // Handle success

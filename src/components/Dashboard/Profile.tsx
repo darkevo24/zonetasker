@@ -53,6 +53,10 @@ const Profile: React.FC = () => {
         setIsModalOpen(false);
     };
 
+    const Logout = () => {
+        sessionStorage.removeItem('userEmail');
+    }
+
     return (
         <div className="flex flex-col bg-gray-100 p-8">
             <Navbar />
@@ -121,6 +125,11 @@ const Profile: React.FC = () => {
                             <p>Change</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='md:w-9/12 mt-4'>
+                <div className='p-4 px-4 flex items-start bg-white w-full rounded-lg'>
+                    <p onClick={Logout} className='text-lg text-red-500 cursor-pointer hover:opacity-80'>Log out</p>
                 </div>
             </div>
             <div className='md:w-9/12 mt-4'>

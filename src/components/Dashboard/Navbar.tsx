@@ -3,10 +3,11 @@ import React, { useEffect } from "react";
 const Navbar: React.FC = () => {
     const email = sessionStorage.getItem("userEmail");
     useEffect(() => {
+        let email = sessionStorage.getItem("userEmail");
         if (!email) {
             window.location.href = "/login";
         }
-    }, []);
+    }, [email]);
     return (
         <div className="p-4 md:p-8 w-full bg-white rounded-lg flex flex-col md:flex-row items-center justify-between">
             <img

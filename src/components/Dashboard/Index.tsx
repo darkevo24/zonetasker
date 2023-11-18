@@ -10,14 +10,6 @@ interface Task {
   applicants: number;
 }
 
-const tasks: Task[] = [
-  { id: 1, task: "Write a blog post", description: "Write an engaging blog post about a given topic.", applicants: 5 },
-  { id: 2, task: "Design a logo", description: "Create a unique and eye-catching logo for a new brand.", applicants: 8 },
-  { id: 3, task: "Code a website", description: "Develop a responsive and functional website with specified features.", applicants: 10 },
-  { id: 4, task: "Create a marketing plan", description: "Develop a comprehensive marketing plan for a new product launch.", applicants: 6 },
-  { id: 5, task: "Translate a document", description: "Translate a document from one language to another with accuracy.", applicants: 4 }
-];
-
 const Dashboard: React.FC = () => {
 
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -28,9 +20,11 @@ const Dashboard: React.FC = () => {
     setIsVisible(false);
   };
 
+  const email = sessionStorage.getItem("userEmail");
+
   useEffect(() => {
     // Fetch tasks from the API
-    axios.get(`https://zonetasker-be.vercel.app/api/tasks`)
+    axios.get(`https://zonetasker-be.vercel.app/api/tasks?email=${email}`)
       .then(response => {
         setTasks(response.data);
       })
