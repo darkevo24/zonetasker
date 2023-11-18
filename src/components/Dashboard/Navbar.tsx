@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
                 <p className="mr-4 md:mr-8 mb-2 md:mb-0 text-xl cursor-pointer hover:opacity-80">
                     My Tasks
                 </p>
-                <p className="mr-4 md:mr-8 mb-2 md:mb-0 text-xl cursor-pointer hover:opacity-80">
+                <p onClick={() => { window.location.href = "/post-a-job-step-1" }} className="mr-4 md:mr-8 mb-2 md:mb-0 text-xl cursor-pointer hover:opacity-80">
                     Post a job
                 </p>
                 <p className="mr-4 md:mr-8 mb-2 md:mb-0 text-xl cursor-pointer hover:opacity-80">
