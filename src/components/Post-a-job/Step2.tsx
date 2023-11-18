@@ -33,6 +33,13 @@ const Step2: React.FC = () => {
         return 'selected-date';
     };
 
+    useEffect(() => {
+        const taskDescription = sessionStorage.getItem('taskDescription');
+        if (!taskDescription) {
+            window.location.href = '/post-a-job-step-1';
+        }
+    });
+
     return (
         <div className='w-full bg-gray-100'>
             <div className='w-full bg-white flex items-center flex-col md:flex-row py-8 px-8'>

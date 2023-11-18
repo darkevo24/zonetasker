@@ -75,7 +75,7 @@ const Dashboard: React.FC = () => {
           </div>
         ))}
 
-        <div className="bg-white rounded-lg p-6 md:mr-4 flex items-center justify-center flex-col h-56 ">
+        <div onClick={() => { window.location.href = "/post-a-job-step-1" }} className="bg-white rounded-lg p-6 md:mr-4 flex items-center justify-center flex-col h-56 hover:bg-opacity-50 cursor-pointer">
           <p className="font-bold text-xl cursor-pointer">Add New Task</p>
           <img src={require("../../logo/plus-button.png")} alt="Add new task" className="w-14 h-14 mt-3 cursor-pointer" />
         </div>

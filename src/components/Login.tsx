@@ -21,6 +21,9 @@ const Login: React.FC<LoginProps> = ({ handleLogin }) => {
         });
 
         if (response.data.message === 'Login successful') {
+            // Save user data to sessionStorage
+            sessionStorage.setItem('userEmail', email);
+
             // Handle successful login, e.g., store user information in state or local storage
             toast.success('Login successful');
             // Redirect or navigate to the dashboard or another page

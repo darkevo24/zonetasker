@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 interface SignUpProps {
     handleSignUp: (signupData: SignUpData) => void;
@@ -50,6 +50,19 @@ const Step3: React.FC<SignUpProps> = ({ handleSignUp }) => {
         handleSignUp(signupData);
         window.location.href = '/post-a-job-step-4';
     };
+
+    useEffect(() => {
+        // Check if userEmail is not present in sessionStorage, then redirect to login
+        const userEmail = sessionStorage.getItem('userEmail');
+        if (!userEmail) {
+            window.location.href = '/post-a-job-step-4';
+        }
+
+        const taskDescription = sessionStorage.getItem('taskDescription');
+        if (!taskDescription) {
+            window.location.href = '/post-a-job-step-1';
+        }
+    }, []);
 
     return (
         <div className='w-full bg-gray-100'>

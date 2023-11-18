@@ -1,4 +1,7 @@
+import axios from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 interface Profile {
     name: string;
@@ -8,6 +11,12 @@ interface Profile {
     image: string;
     online: boolean;
     numberReviews?: number;
+}
+
+interface PostData {
+    taskTitle: string;
+    taskDescription: string;
+    selectedCategories: string[]; // Replace with the actual type of your categories
 }
 
 const Step4: React.FC = () => {
@@ -65,6 +74,43 @@ const Step4: React.FC = () => {
     };
 
     useEffect(() => {
+        // Retrieve data from sessionStorage
+        const taskTitle = sessionStorage.getItem('taskTitle');
+        const taskDescription = sessionStorage.getItem('taskDescription');
+        const selectedCategories = JSON.parse(sessionStorage.getItem('selectedCategories') || '[]') as string[];
+
+        // Data to be sent to the backend
+        const postData: PostData = {
+            taskTitle: taskTitle || '',
+            taskDescription: taskDescription || '',
+            selectedCategories: selectedCategories || []
+        };
+
+        // Replace the URL with the actual backend API endpoint
+        const backendApiUrl = 'https://zonetasker-be.vercel.app';
+
+        if (taskTitle) {
+            // Send data to the backend using Axios when the component mounts
+            axios.post<any, AxiosResponse<PostData>>(`${backendApiUrl}/api/tasks`, {
+                "task": taskTitle,
+                "description": taskDescription,
+                "applicants": 0,
+                "categories": selectedCategories.toString()
+            })
+                .then((response) => {
+                    // Handle success
+                    toast.success('Data sent successfully');
+                    sessionStorage.clear();
+                    console.log(response);
+                })
+                .catch((error: AxiosError) => {
+                    // Handle error
+                    console.error('Error sending data to the backend', error);
+                });
+        }
+    }, []);
+
+    useEffect(() => {
         // Apply sorting logic based on the selected option
         let sortedProfiles = [...initialProfiles];
 
@@ -93,6 +139,7 @@ const Step4: React.FC = () => {
 
     return (
         <div className='w-full bg-gray-100 min-h-screen'>
+            <ToastContainer />
             <div className='w-full bg-white flex flex-col md:flex-row items-center py-8 px-8'>
                 <img onClick={() => { window.location.href = "/" }} src={require('../../logo/ZT.png')} alt='logo' width={230} className='absolute cursor-pointer' />
                 <div className='flex items-center justify-center w-full text-white md:mt-0 mt-20'>

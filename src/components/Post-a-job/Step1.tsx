@@ -18,18 +18,48 @@ const customStyles = {
 };
 
 const Step1: React.FC = () => {
-    let subtitle: HTMLHeadingElement;
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [iconChanged, setIconChanged] = useState(false);
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]); // State to hold selected categories
-    // After importing useState and useEffect
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [taskDescription, setTaskDescription] = useState('');
+    const [taskTitle, setTaskTitle] = useState('');
+
+    useEffect(() => {
+        // Load data from sessionStorage on component mount
+        const storedTaskDescription = sessionStorage.getItem('taskDescription');
+        const storedSelectedCategories = sessionStorage.getItem('selectedCategories');
+        const storedTaskTitle = sessionStorage.getItem('taskTitle');
+
+        if (storedTaskTitle) {
+            setTaskTitle(storedTaskTitle);
+        }
+
+        if (storedTaskDescription) {
+            setTaskDescription(storedTaskDescription);
+        }
+
+        if (storedSelectedCategories) {
+            setSelectedCategories(JSON.parse(storedSelectedCategories));
+        }
+    }, []);
+
+    useEffect(() => {
+        // Save data to sessionStorage whenever taskDescription or selectedCategories change
+        sessionStorage.setItem('taskDescription', taskDescription);
+        sessionStorage.setItem('selectedCategories', JSON.stringify(selectedCategories));
+        sessionStorage.setItem('taskTitle', taskTitle);
+
+    }, [taskDescription, selectedCategories]);
 
     // Inside the PostAJob component
     // Function to handle textarea input
     const handleTaskDescriptionChange = (event: any) => {
         setTaskDescription(event.target.value);
+    };
+
+    const handleTaskDTitleChange = (event: any) => {
+        setTaskTitle(event.target.value);
     };
 
     const toggleDropdown = () => {
@@ -85,11 +115,24 @@ const Step1: React.FC = () => {
 
             <div className='w-full flex flex-col items-center'>
                 <div className='bg-white w-10/12 p-8 mt-8 rounded-lg'>
+                    <h1 className='text-2xl font-bold'>Task title</h1>
+                    <input
+                        type='text'
+                        className='w-full mt-4 px-4 py-3 border border-black rounded-2xl text-gray-400'
+                        value={taskTitle}
+                        placeholder={`Post your task needs. (Example: "Need help moving${selectedCategories.length > 0 ? ` for ${selectedCategories.join(', ')}` : ''}")`}
+                        onChange={handleTaskDTitleChange}
+                    ></input>
+                </div>
+            </div>
+
+            <div className='w-full flex flex-col items-center'>
+                <div className='bg-white w-10/12 p-8 mt-4 rounded-lg'>
                     <h1 className='text-2xl font-bold'>Post or task description</h1>
                     <textarea
                         className='w-full h-32 mt-4 px-4 py-3 border border-black rounded-2xl text-gray-400'
                         value={taskDescription}
-                        placeholder={`Describe your task needs. (Example: "Need help moving${selectedCategories.length > 0 ? ` for ${selectedCategories.join(', ')}` : ''}")`}
+                        placeholder={`Describe the task in more detail. (Example: "I need help moving my 2 bedroom apartment from 123 Main St to 456 Maple Ave. I have a couch, 2 chairs, 3 dressers, 2 beds, 1 table, 1 TV, 1 bookshelf, 1 microwave, 1 washer, and 1 dryer. I will need help moving these items from the apartment to the moving truck, and then from the moving truck into my new apartment.`}
                         onChange={handleTaskDescriptionChange}
                     ></textarea>
                 </div>
@@ -120,8 +163,9 @@ const Step1: React.FC = () => {
                 isOpen={isModalOpen}
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
-                style={customStyles}
                 contentLabel="Example Modal"
+                className="modal-content mx-auto my-40 p-8 bg-white rounded-lg shadow-lg w-10/12 md:w-6/12"
+                overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
             >
                 <div className='w-full'>
                     <p className='font-bold text-xl mb-6'>Choose categories</p>

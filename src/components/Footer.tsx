@@ -11,10 +11,10 @@ const Footer: React.FC = () => {
                 </div>
                 <div>
                     <ul className="flex space-x-4">
-                        <li>
+                        <li className='hover:opacity-80'>
                             <a href="/">Home</a>
                         </li>
-                        <li>
+                        <li className='hover:opacity-80'>
                             <a href="/tasks">Services</a>
                         </li>
                         {/* <li>
