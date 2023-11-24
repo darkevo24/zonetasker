@@ -55,6 +55,7 @@ const Profile: React.FC = () => {
 
     const Logout = () => {
         sessionStorage.removeItem('userEmail');
+        window.location.href = "/login";
     }
 
     return (

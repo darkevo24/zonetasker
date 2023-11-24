@@ -118,7 +118,7 @@ const Step1: React.FC = () => {
                     <h1 className='text-2xl font-bold'>Task title</h1>
                     <input
                         type='text'
-                        className='w-full mt-4 px-4 py-3 border border-black rounded-2xl text-gray-400'
+                        className='w-full mt-4 px-4 py-3 border border-black rounded-2xl '
                         value={taskTitle}
                         placeholder={`Post your task needs. (Example: "Need help moving${selectedCategories.length > 0 ? ` for ${selectedCategories.join(', ')}` : ''}")`}
                         onChange={handleTaskDTitleChange}
@@ -130,7 +130,7 @@ const Step1: React.FC = () => {
                 <div className='bg-white w-10/12 p-8 mt-4 rounded-lg'>
                     <h1 className='text-2xl font-bold'>Post or task description</h1>
                     <textarea
-                        className='w-full h-32 mt-4 px-4 py-3 border border-black rounded-2xl text-gray-400'
+                        className='w-full h-32 mt-4 px-4 py-3 border border-black rounded-2xl '
                         value={taskDescription}
                         placeholder={`Describe the task in more detail. (Example: "I need help moving my 2 bedroom apartment from 123 Main St to 456 Maple Ave. I have a couch, 2 chairs, 3 dressers, 2 beds, 1 table, 1 TV, 1 bookshelf, 1 microwave, 1 washer, and 1 dryer. I will need help moving these items from the apartment to the moving truck, and then from the moving truck into my new apartment.`}
                         onChange={handleTaskDescriptionChange}
